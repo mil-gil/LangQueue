@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Word Learning",
+    "version": "1.0",
+    "description": "Easily access the definitions of words in your target languages, and add them to a personalized queue of learning tasks that evolves with your interests",
+    "externally_connectable": {
+      "ids": ["mgijmajocgfcbeboacabfgobmjgjcoja"]
+    },
+    "action": {
+          "default_title": "Popup",
+          "default_popup": "popup.html"
+    },
+    "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+    ],
+    "host_permissions": [
+    "<all_urls>"
+    ],
+    "background": {
+      "service_worker": "scripts/background.js"
+    },
+    "web_accessible_resources": [
+    { 
+       "resources": ["ctoe_dict.json"],
+       "matches": ["<all_urls>"]
+    }
+    ],  
+    "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": [
+            "<all_urls>"
+          ]
+        }
+        ]
+    
+}
